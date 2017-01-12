@@ -1,10 +1,11 @@
 ﻿body {
-    background: url(http://habrastorage.org/files/c9c/191/f22/c9c191f226c643eabcce6debfe76049d.jpg);
+    background: url('Images/bg_login.jpg');
 }
 
 .jumbotron {
 	text-align: center;
-	width: 30rem;
+	width: 40rem;
+    height: 60%;
 	border-radius: 0.5rem;
 	top: 0;
 	bottom: 0;
@@ -24,6 +25,7 @@
 
 input {
 	width: 100%;
+    max-width: 100%;
 	margin-bottom: 1.4rem;
 	padding: 1rem;
 	background-color: #ecf2f4;

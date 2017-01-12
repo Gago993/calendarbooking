@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalendarBookingProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,11 @@ namespace CalendarBookingProject.Controllers
     {
         public ActionResult Index()
         {
+            if (!UserManager.IsSingedIn())
+            {
+                return RedirectToAction("Index", "Account");
+            }
+
             return View();
         }
 
@@ -27,6 +33,13 @@ namespace CalendarBookingProject.Controllers
             return View();
         }
 
-       
+        public ApplicationSignInManager UserManager
+        {
+            get
+            {
+                return new ApplicationSignInManager(HttpContext);
+            }
+        }
+
     }
 }

@@ -15,7 +15,10 @@ namespace CalendarBookingProject.Models
         public ApplicationSignInManager(HttpContextBase httpContext)
         {
             this.httpContext = httpContext;
-            this.User = (ApplicationUser)httpContext.Session["User"];
+            if(this.httpContext != null && this.httpContext.Session["User"] != null)
+            {
+                this.User = (ApplicationUser)httpContext.Session["User"];
+            }
         }
 
         internal bool IsSingedIn()
@@ -35,6 +38,14 @@ namespace CalendarBookingProject.Models
                 UserID = user.ID,
             };
             this.httpContext.Session.Add("User", signInUser);
+        }
+
+        internal void SingOut()
+        {
+            if (this.httpContext != null && this.httpContext.Session != null)
+            {
+                this.httpContext.Session.Abandon();
+            }
         }
     }
 }
