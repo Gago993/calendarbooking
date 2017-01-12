@@ -9,8 +9,15 @@ namespace CalendarBookingProject.Models
     {
 
         public ApplicationUser User;
-
         private HttpContextBase httpContext;
+
+        public ApplicationSignInManager(HttpContext current)
+        {
+            if (current != null)
+            {
+                this.httpContext = new HttpContextWrapper(current);
+            }
+        }
 
         public ApplicationSignInManager(HttpContextBase httpContext)
         {
