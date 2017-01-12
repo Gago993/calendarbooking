@@ -35,7 +35,7 @@ namespace CalendarBookingProject
                         "~/App/Core/config.js",
 
                         "~/App/Main/main.module.js",
-                        "~/App/Main/main.controller.js",
+                        "~/App/Main/*.controller.js",
 
                         "~/Scripts/bower_components/angular-resource/angular-resource.js"));
 
@@ -51,8 +51,7 @@ namespace CalendarBookingProject
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Scripts/bower_components/fullcalendar/dist/fullcalendar.css",
-                      "~/Scripts/bower_components/fullcalendar/dist/fullcalendar.print.css"));
+                      "~/Scripts/bower_components/fullcalendar/dist/fullcalendar.css"));
         }
     }
 }
