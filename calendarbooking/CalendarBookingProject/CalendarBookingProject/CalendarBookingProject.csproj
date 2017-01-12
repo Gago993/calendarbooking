@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\BookingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Migrations\201701121757224_InitialDatabase.cs" />
     <Compile Include="Migrations\201701121757224_InitialDatabase.Designer.cs">
