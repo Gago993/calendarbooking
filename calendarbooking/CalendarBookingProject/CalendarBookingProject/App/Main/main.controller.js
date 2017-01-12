@@ -59,7 +59,7 @@
                 },
                 events: function (start, end, timezone, callback) {
 
-                    var result = [{ title: "booked", start: "2017-01-13T16:00:00", end: '2017-01-13T:23:59:59' }];
+                    var result = [{ title: "booked", start: "2017-01-13T08:00:00", end: '2017-01-13T:23:59:59' }];
                     
                     callback(result);
                 },

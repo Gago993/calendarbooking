@@ -49,9 +49,12 @@ namespace CalendarBookingProject
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.css", 
                       "~/Content/site.css",
                       "~/Scripts/bower_components/fullcalendar/dist/fullcalendar.css"));
+
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                      "~/Content/login.css"));
         }
     }
 }

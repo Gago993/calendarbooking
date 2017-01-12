@@ -17,23 +17,35 @@
         vm.thirdPart;
 
         for (var i = 0; i < clientEvents.length; i++) {
-            if (i == 0) {
-                vm.isBookedFirstPart = moment(clientEvents[i].start).format("HH") == '24' ? true : false;
+            console.log(clientEvents[i]);
+            var hour = moment(clientEvents[i].start).format("HH");
+            if (hour == '00') {
+                vm.isBookedFirstPart = true;
             }
-            else if (i == 1) {
-                vm.isBookedSecondPart = moment(clientEvents[i].start).format("HH") == '08' ? true : false;
+            else if ( hour == '08') {
+                vm.isBookedSecondPart = true;
             }
-            else if (i == 2) {
-                vm.isBookedThirdPart = moment(clientEvents[i].start).format("HH") == '16' ? true : false;
+            else if ( hour == '16') {
+                vm.isBookedThirdPart = true;
             }
         }
+
+        console.log(vm.isBookedFirstPart, vm.isBookedSecondPart, vm.isBookedThirdPart)
 
         vm.save = save;
         vm.close = close;
 
         function save() {
-
-            $uibModalInstance.close(firstPart, secondPart, thirdPart);
+            if (!vm.isBookedFirstPart && vm.firstPart) {
+                console.log("nice 1");
+            }
+            if (!vm.isBookedSecondPart && vm.secondPart) {
+                console.log("nice 2");
+            }
+            if (!vm.isBookedThirdPart && vm.thirdPart) {
+                console.log("nice 3");
+            }
+            $uibModalInstance.close(vm.firstPart, vm.secondPart, vm.thirdPart);
         }
 
         function close() {
