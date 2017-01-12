@@ -20,7 +20,6 @@
         vm.calendar = {
             calendar: {
                 height: 550,
-
                 allDayText: '',
                 defaultView: 'custom',
                 fixedWeekCount: false,
@@ -58,8 +57,7 @@
                     }
                 },
                 events: function (start, end, timezone, callback) {
-
-                    var result = [{ title: "booked", start: "2017-01-13T08:00:00", end: '2017-01-13T:23:59:59' }];
+                    var result = [{ title: "booked", start: "2017-01-13T08:00:00", end: '2017-01-13T12:21:21' }];
                     
                     callback(result);
                 },

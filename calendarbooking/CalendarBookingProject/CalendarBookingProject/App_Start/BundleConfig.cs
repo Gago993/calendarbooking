@@ -30,6 +30,7 @@ namespace CalendarBookingProject
                         "~/App/App.js",
 
                         "~/App/DataServices/services.data.module.js",
+                        "~/App/DataServices/*.data.js",
 
                         "~/App/Core/core.module.js",
                         "~/App/Core/config.js",

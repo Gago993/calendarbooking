@@ -157,6 +157,7 @@
     <Content Include="App\App.js" />
     <Content Include="App\Core\config.js" />
     <Content Include="App\Core\core.module.js" />
+    <Content Include="App\DataServices\booking.data.js" />
     <Content Include="App\DataServices\services.data.module.js" />
     <Content Include="App\Main\index.html" />
     <Content Include="App\Main\main.controller.js" />
