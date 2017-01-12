@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using CalendarBookingProject.Models;
 using CalendarBookingProject.ProjectContext;
+using System.Web;
 
 namespace CalendarBookingProject.Controllers.api
 {
@@ -35,6 +36,14 @@ namespace CalendarBookingProject.Controllers.api
             }
 
             return Ok(booking);
+        }
+
+        [Route("api/bookings/user")]
+        public async Task<IHttpActionResult> GeUsertBookings()
+        {
+            var session = HttpContext.Current.Session;
+
+            return BadRequest();
         }
 
         // PUT: api/Bookings/5
