@@ -30,7 +30,8 @@ namespace CalendarBookingProject.Controllers
 
             if (user == null)
             {
-                return new HttpNotFoundResult();
+                ModelState.AddModelError("Login", "Invalid username or password");
+                return View("Index", LoginViewModel);
             }
 
             UserManager.SingIn(user);
