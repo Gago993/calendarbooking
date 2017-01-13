@@ -10,7 +10,7 @@ namespace CalendarBookingProject.ProjectContext
 {
     public class CalendarBookingDbContext : DbContext
     {
-        public CalendarBookingDbContext() : base("DefaultContext")
+        public CalendarBookingDbContext() : base("DefaultConnection")
         {
         }
 
