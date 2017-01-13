@@ -244,7 +244,6 @@
     <Content Include="Scripts\bower_components\angular\index.js" />
     <Content Include="Scripts\bower_components\fullcalendar\dist\fullcalendar.css" />
     <Content Include="Scripts\bower_components\fullcalendar\dist\fullcalendar.js" />
-    <Content Include="Scripts\bower_components\fullcalendar\dist\fullcalendar.min.css" />
     <Content Include="Scripts\bower_components\fullcalendar\dist\fullcalendar.min.js" />
     <Content Include="Scripts\bower_components\fullcalendar\dist\fullcalendar.print.css" />
     <Content Include="Scripts\bower_components\fullcalendar\dist\gcal.js" />

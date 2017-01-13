@@ -12,6 +12,8 @@ namespace CalendarBookingProject.ProjectContext
     {
         public CalendarBookingDbContext() : base("DefaultConnection")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<User> Users { get; set; }

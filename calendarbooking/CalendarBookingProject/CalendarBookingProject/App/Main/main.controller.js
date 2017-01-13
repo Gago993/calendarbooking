@@ -24,6 +24,7 @@
                 allDayText: '',
                 defaultView: 'custom',
                 fixedWeekCount: false,
+                eventStartEditable: false,
                 editable: true,
                 header: {
                     left: 'title',
