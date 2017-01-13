@@ -40,30 +40,44 @@
         }
 
         function save() {
-            
+
             if (!vm.isBookedFirstPart && vm.firstPart) {
+                var from = new Date(vm.currentDate);
+                var to = new Date(vm.currentDate);
+                from = setDate(from, 24, 0, 0);
+                to = setDate(to, 8, 0, 0);
                 var booking = new BookingData();
-                booking.DateFrom = moment(vm.currentDate._d).hours(0).format();
-                booking.DateTo = moment(vm.currentDate._d).hours(8).format();
-                return;
+                booking.DateFrom = from;
+                booking.DateTo = to;
+                
                 BookingData.save(booking, function (data) {
                     console.log(data);
                 });
             }
             if (!vm.isBookedSecondPart && vm.secondPart) {
+                console.log("second");
+                var from = new Date(vm.currentDate);
+                var to = new Date(vm.currentDate);
+                from = setDate(from, 8, 0, 0);
+                to = setDate(to, 16, 0, 0);
                 var booking = new BookingData();
-                booking.DateFrom = moment(vm.currentDate._d).hours(8).format();
-                booking.DateTo = moment(vm.currentDate._d).hours(16).format();
-                return;
+                booking.DateFrom = from;
+                booking.DateTo = to;
+
                 BookingData.save(booking, function (data) {
                     console.log(data);
                 });
             }
             if (!vm.isBookedThirdPart && vm.thirdPart) {
+                var from = new Date(vm.currentDate);
+                var to = new Date(vm.currentDate);
+                from = setDate(from, 16, 0, 0);
+                to = setDate(to, 24, 0, 0);
+
                 var booking = new BookingData();
-                booking.DateFrom = moment(vm.currentDate._d).hours(16).format();
-                booking.DateTo = moment(vm.currentDate._d).hours(24).format();
-                return;
+                booking.DateFrom = from;
+                booking.DateTo = to;
+
                 BookingData.save(booking, function (data) {
                     console.log(data);
                 });
@@ -73,6 +87,15 @@
 
         function close() {
             $uibModalInstance.dismiss();
+        }
+
+        // private functions 
+        function setDate(date, hours, minutes, seconds) {
+            date.setHours(hours);
+            date.setMinutes(minutes);
+            date.setSeconds(seconds);
+
+            return date;
         }
     }
 })()
