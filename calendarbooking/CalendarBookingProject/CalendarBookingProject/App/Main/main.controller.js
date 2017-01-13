@@ -32,8 +32,14 @@
                     var clientEvents = $('#calendar').fullCalendar('clientEvents');
                     var currentDate = date;
                     var maxDate = new Date();
+                    var currentMonth = maxDate.getMonth();
+                    var month = (moment(date).get('month'));
 
                     if (date < maxDate) {
+                        return;
+                    }
+
+                    if (month > currentMonth) {
                         return;
                     }
 
@@ -69,7 +75,6 @@
                 events: function (start, end, timezone, callback) {
                     BookingData.getBookings(function (data) {
                         var response = []
-                        console.log(data);
                         for (var i = 0; i < data.length; i++) {
                             var obj = {};
                             obj.title = "booked";
@@ -85,11 +90,17 @@
                 },
                 dayRender: function (date, cell) {
                     var maxDate = new Date();
+                    var currentMonth = maxDate.getMonth();
+                    var month = (moment(date).get('month'));
 
-                    console.log(date, maxDate);
                     if (date < maxDate) {
                         $(cell).addClass('fc-state-disabled');
                     }
+
+                    if (month > currentMonth) {
+                        $(cell).addClass('fc-state-disabled');
+                    }
+
                 }
             }
         }
