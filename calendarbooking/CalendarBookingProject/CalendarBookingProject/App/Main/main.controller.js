@@ -31,6 +31,11 @@
                 dayClick: function (date, jsEvent, view) {
                     var clientEvents = $('#calendar').fullCalendar('clientEvents');
                     var currentDate = date;
+                    var maxDate = new Date();
+
+                    if (date < maxDate) {
+                        return;
+                    }
 
                     var modalInstance = $uibModal.open({
                         animation: true,
@@ -79,7 +84,12 @@
                     });
                 },
                 dayRender: function (date, cell) {
-                    //$(cell).addClass('fc-state-disabled');
+                    var maxDate = new Date();
+
+                    console.log(date, maxDate);
+                    if (date < maxDate) {
+                        $(cell).addClass('fc-state-disabled');
+                    }
                 }
             }
         }

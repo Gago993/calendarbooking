@@ -21,8 +21,7 @@
         vm.currentDate = currentDate;
         vm.save = save;
         vm.close = close;
-        console.log(moment(currentDate._d).format());
-        console.log(currentDate);
+
         for (var i = 0; i < clientEvents.length; i++) {
             var hour = moment(clientEvents[i].start).format("HH");
 
@@ -39,8 +38,6 @@
                 vm.thirdPartTime = clientEvents[i];
             }
         }
-
-        console.log(vm.firstPartTime, vm.secondPartTime, vm.thirdPartTime);
 
         function save() {
             
