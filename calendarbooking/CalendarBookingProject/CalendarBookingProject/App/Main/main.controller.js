@@ -5,9 +5,9 @@
         .module("app.main")
         .controller("MainController", MainController);
 
-    MainController.$inject = ["$uibModal", "BookingData"];
+    MainController.$inject = ["$uibModal", "BookingData", "Color"];
 
-    function MainController($uibModal, BookingData) {
+    function MainController($uibModal, BookingData, Color) {
         var vm = this;
 
         var date = new Date();
@@ -82,6 +82,7 @@
                             obj.start = new Date();
                             obj.end = new Date();
                             obj.UserID = data[i].UserID;
+                            obj.color = Color.getUsersColor(obj.UserID);
                             response.push(obj);
                         }
 

@@ -37,6 +37,7 @@ namespace CalendarBookingProject
 
                         "~/App/Main/main.module.js",
                         "~/App/Main/*.controller.js",
+                        "~/App/Main/*.service.js",
 
                         "~/Scripts/bower_components/angular-resource/angular-resource.js"));
 
