@@ -9,6 +9,18 @@
 
     function BookingData($resource) {
         return $resource("/api/bookings/:id", {}, {
+            getBookings: {
+                method: "GET",
+                url: "/api/bookings",
+                isArray: true,
+                transformResponse: transformResponse
+            }
         });
+
+        function transformResponse(data) {
+            var data = JSON.parse(data);
+
+            console.log(data);
+        }
     }
 })();
