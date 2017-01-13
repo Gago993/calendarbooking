@@ -12,15 +12,8 @@
             getBookings: {
                 method: "GET",
                 url: "/api/bookings",
-                isArray: true,
-                transformResponse: transformResponse
+                isArray: true
             }
         });
-
-        function transformResponse(data) {
-            var data = JSON.parse(data);
-
-            console.log(data);
-        }
     }
 })();

@@ -5,9 +5,9 @@
         .module("app.main")
         .controller("MainController", MainController);
 
-    MainController.$inject = ["$uibModal"];
+    MainController.$inject = ["$uibModal", "BookingData"];
 
-    function MainController($uibModal) {
+    function MainController($uibModal, BookingData) {
         var vm = this;
 
         var date = new Date();
@@ -19,6 +19,7 @@
 
         vm.calendar = {
             calendar: {
+                theme:true,
                 height: 550,
                 allDayText: '',
                 defaultView: 'custom',
@@ -61,9 +62,21 @@
                     }
                 },
                 events: function (start, end, timezone, callback) {
-                    var result = [{ title: "booked", start: "2017-01-13T08:00:00", end: '2017-01-13T12:21:21' }];
-                    
-                    callback(result);
+                    BookingData.getBookings(function (data) {
+                        var response = []
+                        console.log(data);
+                        for (var i = 0; i < data.length; i++) {
+                            var obj = {};
+                            obj.title = "booked";
+                            obj.start = new Date();
+                            obj.end = new Date();
+                            obj.UserID = data[i].UserID;
+                            response.push(obj);
+                        }
+
+                        callback(response);
+                        
+                    });
                 },
                 dayRender: function (date, cell) {
                     //$(cell).addClass('fc-state-disabled');
