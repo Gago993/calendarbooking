@@ -29,6 +29,7 @@
                 },
                 dayClick: function (date, jsEvent, view) {
                     var clientEvents = $('#calendar').fullCalendar('clientEvents');
+                    var currentDate = date;
 
                     var modalInstance = $uibModal.open({
                         animation: true,
@@ -39,6 +40,9 @@
                         resolve: {
                             clientEvents: function () {
                                 return clientEvents;
+                            },
+                            currentDate: function () {
+                                return currentDate;
                             }
                         },
                     });

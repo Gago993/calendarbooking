@@ -5,9 +5,9 @@
         .module("app.main")
         .controller("ModalController", ModalController);
 
-    ModalController.$inject = ["$uibModalInstance", "clientEvents", "BookingData"];
+    ModalController.$inject = ["$uibModalInstance", "clientEvents", "currentDate", "BookingData"];
 
-    function ModalController($uibModalInstance, clientEvents, BookingData) {
+    function ModalController($uibModalInstance, clientEvents, currentDate, BookingData) {
         var vm = this;
         vm.isBookedFirstPart = false;
         vm.isBookedSecondPart = false;
@@ -18,49 +18,55 @@
         vm.firstPartTime;
         vm.secondPartTime;
         vm.thirdPartTime;
+        vm.currentDate = currentDate;
         vm.save = save;
         vm.close = close;
-        console.log(clientEvents);
-
+        console.log(moment(currentDate._d).format());
+        console.log(currentDate);
         for (var i = 0; i < clientEvents.length; i++) {
             var hour = moment(clientEvents[i].start).format("HH");
 
             if (hour == '00') {
                 vm.isBookedFirstPart = true;
-                vm.firstPartTime = moment(clientEvents[i].start);
+                vm.firstPartTime = clientEvents[i];
             }
             else if ( hour == '08') {
                 vm.isBookedSecondPart = true;
-                vm.seconPartTime = moment(clientEvents[i].start);
+                vm.secondPartTime = clientEvents[i];
             }
             else if ( hour == '16') {
                 vm.isBookedThirdPart = true;
-                vm.thirdPartTime = moment(clientEvents[i].start);
+                vm.thirdPartTime = clientEvents[i];
             }
         }
+
+        console.log(vm.firstPartTime, vm.secondPartTime, vm.thirdPartTime);
 
         function save() {
             
             if (!vm.isBookedFirstPart && vm.firstPart) {
                 var booking = new BookingData();
-                booking.DateFrom = moment(vm.firstPartTime.start).format();
-                booking.DateTo = moment(vm.firstPartTime.end).format();
+                booking.DateFrom = moment(vm.currentDate._d).hours(0).format();
+                booking.DateTo = moment(vm.currentDate._d).hours(8).format();
+                return;
                 BookingData.save(booking, function (data) {
                     console.log(data);
                 });
             }
             if (!vm.isBookedSecondPart && vm.secondPart) {
                 var booking = new BookingData();
-                booking.DateFrom = moment(vm.secondPartTime.start).format();
-                booking.DateTo = moment(vm.secondPartTime.end).format();
+                booking.DateFrom = moment(vm.currentDate._d).hours(8).format();
+                booking.DateTo = moment(vm.currentDate._d).hours(16).format();
+                return;
                 BookingData.save(booking, function (data) {
                     console.log(data);
                 });
             }
             if (!vm.isBookedThirdPart && vm.thirdPart) {
                 var booking = new BookingData();
-                booking.DateFrom = moment(vm.thirdPartTime.start).format();
-                booking.DateTo = moment(vm.thirdPartTime.end).format();
+                booking.DateFrom = moment(vm.currentDate._d).hours(16).format();
+                booking.DateTo = moment(vm.currentDate._d).hours(24).format();
+                return;
                 BookingData.save(booking, function (data) {
                     console.log(data);
                 });
